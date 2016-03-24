@@ -31,9 +31,6 @@ $(function(){
     })
   }
 
-  function isMobile(){
-    return navigator.userAgent.match(/iPhone|iPad|iPod|Android|android|BlackBerry|IEMobile/i) ? true : false; 
-  }
 
   //根据屏幕宽度进行响应(应对移动设备的访问)
   if( isMobile()){
@@ -64,6 +61,7 @@ $(function(){
     $(".doc-left").removeClass("span3");
     $(".doc-left").css("width",'100%');
     $(".doc-left").css("height",'initial');
+    $(".doc-left").css("min-height",'0px');
     $(".doc-right").removeClass("span12");
     $(".doc-head .right").hide();
     $(".page-edit-link").html('');
@@ -121,6 +119,7 @@ $(function(){
       $(".page-edit-link").show();
       $("#page-content").attr("src" , base_url+"/Home/page/index?page_id="+page_id);
       $("#edit-link").attr("href" , base_url+"/Home/page/edit?page_id="+page_id);
+      $("#copy-link").attr("href" , base_url+"/Home/page/edit?item_id="+item_id+"&copy_page_id="+page_id);
       $("#share-page-link").html("http://"+window.location.host+base_url+"/"+item_id+"?page_id="+page_id);
       $("#delete-link").attr("href" , base_url+"/Home/page/delete?page_id="+page_id);
   }
@@ -152,7 +151,36 @@ $(function(){
       return height
   }
 
-
+  var keyMap = {
+    // 编辑
+    "Ctrl+E": function() {
+      location.href = $("#edit-link").attr('href');
+    },
+    // 删除
+    "Ctrl+D": function() {
+      if (confirm('确认删除吗？'))
+        location.href = $("#delete-link").attr('href');
+    },
+    // 新建页面
+    "Ctrl+F1": function() {
+      location.href = $("#new-like").attr('href');
+    },
+    // 新建目录
+    "Ctrl+F2": function() {
+      location.href = $("#dir-like").attr('href');
+    }
+  };
+  if (!isMobile()) initKeys();
+  function initKeys() {
+    var $doc = $(document);
+    $.each(keyMap, function(key, fn) {
+      $doc.on('keydown', null, key, function(e) {
+        e.preventDefault();
+        fn();
+        return false;
+      });
+    });
+  }
     
 })
 

@@ -57,6 +57,11 @@ ShowDoc就是一个非常适合IT团队的在线文档分享工具，它可以�
 
 ###部署到自己的服务器
 
+- 环境要求
+
+	PHP5.3以上版本、php-mbstring模块、php-pdo模块、mysql数据库
+
+
 - 克隆或者下载代码：
 
 	[https://github.com/star7th/showdoc](https://github.com/star7th/showdoc)
@@ -73,9 +78,19 @@ ShowDoc就是一个非常适合IT团队的在线文档分享工具，它可以�
 
 	请确保Application/Runtime 和Public/Uploads 有可写权限
 
+- 错误排查
+	
+	部署时出错，请先确认是否按照上面步骤执行（例如说目录权限有没有）。然后进Application/Runtime/Log看一下日志，或清除下Application/Runtime/目录下所有文件（缓存来的）试试。再遇到无法解决的问题可联系我，联系方式有博客、github、邮件等。
+
+- nginx下的重定向规则
+	
+	请参考：[http://blog.star7th.com/2016/03/1969.html](http://blog.star7th.com/2016/03/1969.html)
+
 ###使用在线的ShowDoc
 
 - 如果你没有自己的服务器，但又想使用ShowDoc作为分档分享工具，你可以使用在线的ShowDoc   [http://doc.star7th.com](http://doc.star7th.com/index.php/home/user/login)
+
+- http://doc.star7th.com 作为在线服务会长期维护，请放心托管你的文档数据，不用担心突然关站的问题。如对数据非常敏感的个人或企业，还是把ShowDoc部署到自己的服务器比较好。
 
 ###版权
 

@@ -81,8 +81,8 @@
       <div class="doc-left-newbar">
 
         <if condition="$ItemPermn">
-          <div><a href="{:U('Home/Page/edit')}?item_id={$item.item_id}"><i class="icon-plus"></i>&nbsp;新建页面</a></div>
-          <div><a href="{:U('Home/Catalog/edit')}?item_id={$item.item_id}" ><i class="icon-folder-open"></i>新建目录</a></div>
+          <div><a href="{:U('Home/Page/edit')}?item_id={$item.item_id}&type=new" id="new-like"><i class="icon-plus"></i>&nbsp;新建页面</a></div>
+          <div><a href="{:U('Home/Catalog/edit')}?item_id={$item.item_id}" id="dir-like" ><i class="icon-folder-open"></i>新建目录</a></div>
 
         </if>
 
@@ -99,9 +99,10 @@
       <div class='page-edit-link pull-right hide'>
         <ul class="inline">
           <if condition="$ItemPermn">
-            <li><a href="" id="share-page">分享</a></li>
-            <li><a href="" id="edit-link">编辑</a></li>
-            <li><a href="" onclick="return confirm('确认删除吗？');return false;" id="delete-link">删除</a></li>
+            <li><a href="" id="share-page" title="分享该接口访问地址给你的好友">分享</a></li>
+            <li><a href="" id="copy-link" title="复制该接口到新接口">复制</a></li>
+            <li><a href="" id="edit-link" title="编辑接口">编辑</a></li>
+            <li><a href="" title="删除接口" onclick="return confirm('确认删除吗？');return false;" id="delete-link">删除</a></li>
           <else />
             <li></li>
             <li></li>
@@ -139,5 +140,7 @@
     <p>你可以复制地址给你的好友</p>
   </div>
 </div>
+<script src="__PUBLIC__/js/jquery.bootstrap-growl.min.js"></script>
+<script src="__PUBLIC__/js/jquery.hotkeys.js"></script>
 
 <script src="__PUBLIC__/js/item/show.js"></script>
